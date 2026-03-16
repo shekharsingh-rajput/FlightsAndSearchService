@@ -1,11 +1,9 @@
-const { City } = require("../models/city");
+const { City } = require("../models/index");
 
 class CityRepository {
-  async CreateCity(name) {
+  async createCity(data) {
     try {
-      const city = await City.create({
-        name
-      });
+      const city = await City.create(data);
       return city;
     } catch (error) {
       console.log("something goes wrongi in repo layer");
@@ -13,7 +11,7 @@ class CityRepository {
     }
   }
 
-  async DeleteCity(cityId) {
+  async deleteCity(cityId) {
     try {
         await City.destroy({
             where:{
@@ -27,9 +25,9 @@ class CityRepository {
     }
   }
 
-  async UpdateCity(cityId, data) { 
+  async updateCity(cityId, data) { 
     try {
-        const city = await City.Update(data,{
+        const city = await City.update(data,{
             where:{
                 id : cityId
             }
@@ -41,9 +39,9 @@ class CityRepository {
     }
   }
 
-  async GetCity(cityId) {
+  async getCity(cityId) {
     try {
-        const city = await City.findByPK(cityId);
+        const city = await City.findByPk(cityId);
         return city;
     } catch (error) {
       console.log("something goes wrongi in repo layer");

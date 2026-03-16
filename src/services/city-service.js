@@ -25,9 +25,9 @@ class CityService{
         }
     }
 
-    async updateCity(cityId) {
+    async updateCity(cityId, data) {
         try {
-            const city = await this.cityRepository.UpdateCity(cityId,data);
+            const city = await this.cityRepository.updateCity(cityId, data);
             return city;
         } catch (error) {
             console.log('something went wrong');
@@ -37,7 +37,7 @@ class CityService{
 
     async getCity(cityId){
         try {
-            const city = await this.cityRepository.GetCity(cityId);
+            const city = await this.cityRepository.getCity(cityId);
             return city;
         } catch (error) {
             console.log('something went wrong');
